@@ -1,0 +1,18 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@maptiler/geocoding-control": "^2.1.7",
+    "ol": "^10.6.1",
+    "ol-mapbox-style": "^13.1.0",
+    "proj4": "^2.19.10"
+  }
+}
