@@ -32,14 +32,16 @@ const styleJson = 'https://api.maptiler.com/maps/0198c90f-3b4c-7b60-ac28-d71632d
 
 const map = new Map({
   target: 'map',
-  layers: [
-  ],
   view: new View({
     center: fromLonLat([-44.61109, -19.85329]), // Centro de Pará de Minas
     zoom: 14,
-    minZoom: 10, // Permite um pouco mais de contexto regional
-    maxZoom: 22, // MapTiler suporta zoom até 22
-    constrainResolution: true
+    minZoom: 13, // Permite ver a cidade inteira
+    maxZoom: 18, // Bom nível de detalhe
+    constrainResolution: true,
+    extent: [
+      -4979000, -2271000,  // Sudoeste (mais a oeste e mais ao sul)
+      -4948000, -2241000   // Nordeste (mais a leste e mais ao norte)
+    ]
   })
 });
 
