@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Using OpenLayers with Vite</title>
+    <title>Mapa de Zoneamento</title>
   </head>
   <body>
     <div id="map"></div>
     <div id="map-legend" class="map-legend">
       <h4>Legenda</h4>
       <div class="legend-item">
-        <span class="legend-color" style="background-color: rgba(255, 0, 0, 0.67);"></span>
+        <span class="legend-color" style="background-color: rgba(0, 0, 255, 0.67);"></span>
         <span class="legend-label">Área Residencial</span>
       </div>
       <div class="legend-item">
@@ -20,5 +20,20 @@
       </div>
     </div>
     <script type="module" src="./main.js"></script>
+    <footer class="map-footer">
+      <div class="footer-content">
+        <span class="footer-text">
+          Developed by <a href="https://github.com/mateusbalmeida" target="_blank">Mateus Belchior Almeida</a> with
+        </span>
+        <div class="footer-logos">
+          <a href="https://openlayers.org/" target="_blank" class="footer-logo" title="OpenLayers">
+            <img src="https://openlayers.org/theme/img/logo-dark.svg" alt="OpenLayers Logo" height="18">
+          </a>
+          <a href="https://www.maptiler.com/" target="_blank" class="footer-logo" title="MapTiler">
+            <img src="https://cloud.maptiler.com/static/img/logo/maptiler-logo-adaptive-cloud.svg#cloud" alt="MapTiler Logo" height="18">
+          </a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

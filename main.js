@@ -69,7 +69,7 @@ const residentialLayer = new VectorLayer({
       width: 1
     }),
     fill: new Fill({
-      color: 'rgba(255, 0, 0, 0.67)'
+      color: 'rgba(0, 0, 255, 0.67)'
     })
   })
 });
