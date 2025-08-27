@@ -1,6 +1,5 @@
 import { format } from 'ol/coordinate';
 import './style.css';
-import * as dotenv from 'dotenv'
 import {Map, View} from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
