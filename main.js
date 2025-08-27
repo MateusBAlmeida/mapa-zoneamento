@@ -1,5 +1,6 @@
 import { format } from 'ol/coordinate';
 import './style.css';
+import * as dotenv from 'dotenv'
 import {Map, View} from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
@@ -27,9 +28,9 @@ const utmProjection = getProjection('EPSG:31983');
 
 // Definir atribuição do MapTiler
 const attribution = '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>';
-const key = 'e8qR1W09I7saUuwTXRRH';
-const styleJson = 'https://api.maptiler.com/maps/0198c90f-3b4c-7b60-ac28-d71632db167c/style.json?key=e8qR1W09I7saUuwTXRRH';
-
+const key = import.meta.env.VITE_MAPTILER_KEY;
+console.log('MapTiler Key:', key);
+const styleJson = 'https://api.maptiler.com/maps/0198c90f-3b4c-7b60-ac28-d71632db167c/style.json?key='+ key;
 const map = new Map({
   target: 'map',
   view: new View({
@@ -39,8 +40,8 @@ const map = new Map({
     maxZoom: 18, // Bom nível de detalhe
     constrainResolution: true,
     extent: [
-      -4979000, -2271000,  // Sudoeste (mais a oeste e mais ao sul)
-      -4948000, -2241000   // Nordeste (mais a leste e mais ao norte)
+      -4989000, -2271000,  // Sudoeste (mais a oeste e mais ao sul)
+      -4948000, -2235000   // Nordeste (mais a leste e mais ao norte)
     ]
   })
 });
@@ -49,7 +50,7 @@ apply(map, styleJson);
 
 const mapLayer = new TileLayer({
       source: new TileJSON({
-        url: 'https://api.maptiler.com/tiles/satellite-v2/tiles.json?key=e8qR1W09I7saUuwTXRRH',
+        url: 'https://api.maptiler.com/tiles/satellite-v2/tiles.json?key='+ key,
         attributions: attribution,
       })
     });
@@ -62,7 +63,7 @@ const residentialLayer = new VectorLayer({
       dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
       featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
     }),
-    url: 'https://api.maptiler.com/data/0198cc6d-4785-73df-a953-ead9851afbb0/features.json?key=e8qR1W09I7saUuwTXRRH'
+    url: 'https://api.maptiler.com/data/0198cc6d-4785-73df-a953-ead9851afbb0/features.json?key='+ key
   }),
   zIndex: 1,
   style: new Style({
@@ -307,11 +308,11 @@ document.getElementById('search-button').addEventListener('click', () => {
   }
 });
 
-document.getElementById('search-input').addEventListener('keypress', (event) => {
-  if (event.key === 'Enter') {
-    const searchInput = document.getElementById('search-input');
-    if (searchInput.value.trim()) {
-      searchAddress(searchInput.value);
-    }
-  }
-});
+// document.getElementById('search-input').addEventListener('keypress', (event) => {
+//   if (event.key === 'Enter') {
+//     const searchInput = document.getElementById('search-input');
+//     if (searchInput.value.trim()) {
+//       searchAddress(searchInput.value);
+//     }
+//   }
+// });
