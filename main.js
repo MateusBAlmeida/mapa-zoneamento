@@ -5,6 +5,7 @@ import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
+import KML from 'ol/format/KML.js'
 import {Fill, Stroke, Style, Icon} from 'ol/style';
 import {fromLonLat} from 'ol/proj';
 import proj4 from 'proj4';
@@ -92,13 +93,19 @@ const streetLayer = new TileLayer({
 map.addLayer(streetLayer);
 
 const residential2Layer = new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON({
-      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
+  // source: new VectorSource({
+  //   format: new GeoJSON({
+  //     dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
+  //     featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
+  //   }),
+  //   //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
+  //   url: './data/ZR2.geojson'
+  // }),
+  source : new VectorSource({
+    url : './data/ZR2.kml',
+    format: new KML({
+      extractStyles: false,
     }),
-    //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
-    url: './data/ZR2.geojson'
   }),
   zIndex: 1,
   style: new Style({
