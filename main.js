@@ -1,9 +1,8 @@
-import { format } from 'ol/coordinate';
 import './style.css';
-import {Map, View} from 'ol';
+import Map from 'ol/Map.js'
+import View from 'ol/View.js'
 import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
-import XYZ from 'ol/source/XYZ';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
 import {Fill, Stroke, Style, Icon} from 'ol/style';
@@ -61,8 +60,8 @@ const residential1Layer = new VectorLayer({
       dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
       featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
     }),
-    //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
-    url: './data/ZR1.geojson'
+    url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
+    //url: './data/ZR1.geojson'
   }),
   zIndex: 1,
   style: new Style({
