@@ -104,7 +104,6 @@ const residential2Layer = new VectorLayer({
   source : new VectorSource({
     url : './data/ZR2.kml',
     format: new KML({
-      extractStyles: false,
     }),
   }),
   zIndex: 1,
