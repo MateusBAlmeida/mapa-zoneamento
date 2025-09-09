@@ -24,7 +24,7 @@ register(proj4);
 
 const utmProjection = getProjection('EPSG:31983');
 
-// Definir atribuição do MapTiler
+// Definir atribuição do MapTiler 
 const attribution = '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>';
 const key = import.meta.env.VITE_MAPTILER_KEY;
 console.log('MapTiler Key:', key);
