@@ -1,6 +1,4 @@
 import './style.css';
-import Map from 'ol/Map.js'
-import View from 'ol/View.js'
 import Map from "ol/Map.js"
 import View from "ol/View.js"
 import TileLayer from 'ol/layer/Tile';
