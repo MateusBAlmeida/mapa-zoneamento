@@ -93,20 +93,20 @@ const streetLayer = new TileLayer({
 map.addLayer(streetLayer);
 
 const residential2Layer = new VectorLayer({
-  // source: new VectorSource({
-  //   format: new GeoJSON({
-  //     dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-  //     featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
-  //   }),
-  //   //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
-  //   url: './data/ZR2.geojson'
-  // }),
-  source : new VectorSource({
-    url : './data/ZR2.kml',
-    format: new KML({
-      extractStyles: false,
+  source: new VectorSource({
+    format: new GeoJSON({
+      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
+      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
     }),
+    //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
+    url: './data/ZR02.geojson'
   }),
+  // source : new VectorSource({
+  //   url : './data/ZR2.kml',
+  //   format: new KML({
+  //     extractStyles: false,
+  //   }),
+  // }),
   zIndex: 1,
   style: new Style({
     stroke: new Stroke({
