@@ -3,6 +3,7 @@ import { visualizer } from "rollup-plugin-visualizer"
 import compression from "vite-plugin-compression2"
 
 export default defineConfig({
+  base: './', // Garante que os assets sejam carregados corretamente em produção
   build: {
     chunkSizeWarningLimit: 500, // mantém o alerta realista
     rollupOptions: {
@@ -20,6 +21,9 @@ export default defineConfig({
       },
     },
   },
+  optimizeDeps: {
+    include: ['ol', 'proj4', '@maptiler/sdk', '@maptiler/geocoding-control']
+  },
   plugins: [
     // abre relatório do bundle após o build
     visualizer({
@@ -29,10 +33,10 @@ export default defineConfig({
       brotliSize: true,
     }),
     // gera arquivos .br (brotli) para reduzir tamanho transferido
-    compression({
-      algorithm: "brotliCompress",
-      ext: ".br",
-      deleteOriginFile: false,
-    }),
+    // compression({
+    //   algorithm: "brotliCompress",
+    //   ext: ".br",
+    //   deleteOriginFile: false,
+    // }),
   ],
 })
