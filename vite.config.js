@@ -1,3 +1,4 @@
+
 export default {
   build: {
     sourcemap: true,
@@ -7,7 +8,8 @@ export default {
       output: {
         manualChunks: {
           ol: ['ol'],
-          maptiler: ['@maptiler/sdk']
+          maptiler: ['@maptiler/sdk'],
+          proj4: ['proj4'],
         }
       }
     }
