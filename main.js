@@ -104,6 +104,7 @@ const residential2Layer = new VectorLayer({
   source : new VectorSource({
     url : './data/ZR2.kml',
     format: new KML({
+      extractStyles: false,
     }),
   }),
   zIndex: 1,
@@ -149,8 +150,8 @@ const mistaLayer = new VectorLayer({
       dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
       featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
     }),
-    //url: 'https://api.maptiler.com/data/01992727-cda9-7029-85e5-79edbe3669c1/features.json?key='+ key
-    url: './data/mista.geojson'
+    url: 'https://api.maptiler.com/data/01992727-cda9-7029-85e5-79edbe3669c1/features.json?key='+ key
+    //url: './data/mista.geojson'
   }),
   zIndex: 3,
   style: new Style({
