@@ -32,9 +32,10 @@ console.log('MapTiler Key:', key);
 const styleJson = 'https://api.maptiler.com/maps/0198c90f-3b4c-7b60-ac28-d71632db167c/style.json?key='+ key;
 const map = new Map({
   target: 'map',
+  zIndex: 6,
   view: new View({
     center: fromLonLat([-44.61109, -19.85329]), // Centro de Pará de Minas
-    zoom: 14,
+    zoom: 16,
     minZoom: 13, // Permite ver a cidade inteira
     maxZoom: 18, // Bom nível de detalhe
     constrainResolution: true,
@@ -45,8 +46,6 @@ const map = new Map({
   })
 });
 
-apply(map, styleJson);
-
 const mapLayer = new TileLayer({
       source: new TileJSON({
         url: 'https://api.maptiler.com/tiles/satellite-v2/tiles.json?key='+ key,
@@ -56,28 +55,65 @@ const mapLayer = new TileLayer({
 
     //map.addLayer(mapLayer);
 
-const residentialLayer = new VectorLayer({
+const residential1Layer = new VectorLayer({
   source: new VectorSource({
     format: new GeoJSON({
       dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
       featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
     }),
-    url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
-    //url: './data/Residencial-01.geojson'
+    //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
+    url: './data/ZR1.geojson'
   }),
   zIndex: 1,
   style: new Style({
     stroke: new Stroke({
       color: '#000',
-      width: 1
+      width: 0.2
     }),
     fill: new Fill({
-      color: 'rgba(0, 0, 255, 0.4)'
+      color: 'rgba(0, 0, 255, 0.67)'
     })
   })
 });
 
-map.addLayer(residentialLayer);
+map.addLayer(residential1Layer);
+
+const streetLayer = new TileLayer({
+  source: new TileJSON({
+    url: 'https://api.maptiler.com/maps/0198c90f-3b4c-7b60-ac28-d71632db167c/style.json?key=' + key,
+    attributions: attribution,
+  }),
+  zIndex: 10, // Número alto para ficar sobre todas as outras camadas
+  style: {
+    'text-halo-width': 2,
+    'text-halo-color': '#ffffff'
+  }
+});
+
+map.addLayer(streetLayer);
+
+const residential2Layer = new VectorLayer({
+  source: new VectorSource({
+    format: new GeoJSON({
+      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
+      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
+    }),
+    //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
+    url: './data/ZR2.geojson'
+  }),
+  zIndex: 1,
+  style: new Style({
+    stroke: new Stroke({
+      color: '#000',
+      width: 0.2
+    }),
+    fill: new Fill({
+      color: 'rgba(0, 255, 255, 0.67)'
+    })
+  })
+});
+
+map.addLayer(residential2Layer);
 
 const industrialLayer = new VectorLayer({
   source: new VectorSource({
@@ -92,10 +128,10 @@ const industrialLayer = new VectorLayer({
   style: new Style({
     stroke: new Stroke({
       color: '#000',
-      width: 1
+      width: 0.2
     }),
     fill: new Fill({
-      color: 'rgba(255, 0, 0, 0.4)'
+      color: 'rgba(255, 0, 0, 0.67)'
     })
   })
 });
@@ -108,17 +144,17 @@ const mistaLayer = new VectorLayer({
       dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
       featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
     }),
-    url: 'https://api.maptiler.com/data/01992727-cda9-7029-85e5-79edbe3669c1/features.json?key='+ key
-    //url: './data/Residencial-01.geojson'
+    //url: 'https://api.maptiler.com/data/01992727-cda9-7029-85e5-79edbe3669c1/features.json?key='+ key
+    url: './data/mista.geojson'
   }),
   zIndex: 3,
   style: new Style({
     stroke: new Stroke({
       color: '#000',
-      width: 1
+      width: 0.2
     }),
     fill: new Fill({
-      color: 'rgba(0, 255, 0, 0.4)'
+      color: 'rgba(0, 255, 0, 0.67)'
     })
   })
 });
@@ -138,15 +174,17 @@ const comercialLayer = new VectorLayer({
   style: new Style({
     stroke: new Stroke({
       color: '#000',
-      width: 1
+      width: 0.2
     }),
     fill: new Fill({
-      color: 'rgba(255, 255, 0, 0.4)'
+      color: 'rgba(255, 255, 0, 0.67)'
     })
   })
 });
 
 map.addLayer(comercialLayer);
+
+apply(map, styleJson);
 
 // Criar elemento e overlay para o tooltip
 const tooltipElement = document.createElement('div');
