@@ -1,18 +1,38 @@
+import { defineConfig } from "vite"
+import { visualizer } from "rollup-plugin-visualizer"
+import compression from "vite-plugin-compression2"
 
-export default {
+export default defineConfig({
   build: {
-    sourcemap: true,
-    build: {
-    chunkSizeWarningLimit: 600 * 1024, // Set the limit to 1000 KiB (1 MB)
+    chunkSizeWarningLimit: 500, // mantém o alerta realista
     rollupOptions: {
       output: {
-        manualChunks: {
-          ol: ['ol'],
-          maptiler: ['@maptiler/sdk'],
-          proj4: ['proj4'],
-        }
-      }
-    }
+        manualChunks(id) {
+          // separa OpenLayers em um chunk próprio
+          if (id.includes("node_modules/ol")) {
+            return "openlayers"
+          }
+          // separa libs externas em outro chunk
+          if (id.includes("node_modules")) {
+            return "vendor"
+          }
+        },
+      },
+    },
   },
-  }
-}
+  plugins: [
+    // abre relatório do bundle após o build
+    visualizer({
+      filename: "stats.html",
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+    }),
+    // gera arquivos .br (brotli) para reduzir tamanho transferido
+    compression({
+      algorithm: "brotliCompress",
+      ext: ".br",
+      deleteOriginFile: false,
+    }),
+  ],
+})

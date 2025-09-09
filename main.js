@@ -1,9 +1,8 @@
-import { format } from 'ol/coordinate';
 import './style.css';
-import {Map, View} from 'ol';
+import Map from "ol/Map.js"
+import View from "ol/View.js"
 import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
-import XYZ from 'ol/source/XYZ';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
 import {Fill, Stroke, Style, Icon} from 'ol/style';
