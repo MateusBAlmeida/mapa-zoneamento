@@ -1,7 +1,7 @@
 import { defineConfig } from "vite"
 export default defineConfig({
   build: {
-    sourcemap: true, // útil para depuração
+    sourcemap: true,
     chunkSizeWarningLimit: 500, // mantém o alerta realista
     rollupOptions: {
       output: {
