@@ -2,7 +2,7 @@ import { defineConfig } from "vite"
 export default defineConfig({
   build: {
     sourcemap: true,
-    chunkSizeWarningLimit: 5000, // mantém o alerta realista
+    chunkSizeWarningLimit: 600 * 1024, // mantém o alerta realista
     rollupOptions: {
       output: {
         manualChunks: {
