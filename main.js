@@ -46,223 +46,136 @@ const map = new Map({
   })
 });
 
-const mapLayer = new TileLayer({
-      source: new TileJSON({
-        url: 'https://api.maptiler.com/tiles/satellite-v2/tiles.json?key='+ key,
-        attributions: attribution,
-      })
-    });
+// const mapLayer = new TileLayer({
+//       source: new TileJSON({
+//         url: 'https://api.maptiler.com/tiles/019934a5-1279-739a-abdc-6efb1ce99a68/tiles.json?key='+ key,
+//         attributions: attribution,
+//       })
+//     });
 
-    //map.addLayer(mapLayer);
+//   map.addLayer(mapLayer);
 
-const residential1Layer = new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON({
-      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
-    }),
-    url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
-    //url: '/data/ZR1.geojson'
-  }),
-  zIndex: 1,
-  style: new Style({
-    stroke: new Stroke({
-      color: '#000',
-      width: 0.2
-    }),
-    fill: new Fill({
-      color: 'rgba(0, 0, 255, 0.67)'
-    })
-  })
-});
+// const residential1Layer = new VectorLayer({
+//   source: new VectorSource({
+//     format: new GeoJSON({
+//       dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
+//       featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
+//     }),
+//     url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
+//     //url: '/data/ZR1.geojson'
+//   }),
+//   zIndex: 1,
+//   style: new Style({
+//     stroke: new Stroke({
+//       color: '#000',
+//       width: 0.2
+//     }),
+//     fill: new Fill({
+//       color: 'rgba(0, 0, 255, 0.67)'
+//     })
+//   })
+// });
 
-map.addLayer(residential1Layer);
+// map.addLayer(residential1Layer);
 
-const residential2Layer = new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON({
-      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
-    }),
-    //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
-    url: "data/ZR2-Norte.geojson"
-  }),
-  // source : new VectorSource({
-  //   url : './data/ZR2.kml',
-  //   format: new KML({
-  //     extractStyles: false,
-  //   }),
-  // }),
-  zIndex: 1,
-  style: new Style({
-    stroke: new Stroke({
-      color: '#000',
-      width: 0.2
-    }),
-    fill: new Fill({
-      color: 'rgba(0, 255, 255, 0.67)'
-    })
-  })
-});
+// const residential2Layer = new TileLayer({
+//   source: new TileJSON({
+//     // format: new GeoJSON({
+//     //   dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
+//     //   featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
+//     // }),
+//     url: 'https://api.maptiler.com/tiles/019934a5-1279-739a-abdc-6efb1ce99a68/tiles.json?key='+ key
+//     //url: "data/ZR2-Norte.geojson"
+//   }),
+//   // source : new VectorSource({
+//   //   url : './data/ZR2.kml',
+//   //   format: new KML({
+//   //     extractStyles: false,
+//   //   }),
+//   // }),
+//   zIndex: 1,
+//   style: new Style({
+//     stroke: new Stroke({
+//       color: '#000',
+//       width: 0.2
+//     }),
+//     fill: new Fill({
+//       color: 'rgba(0, 255, 255, 0.67)'
+//     })
+//   })
+// });
 
-map.addLayer(residential2Layer);
+// map.addLayer(residential2Layer);
 
-const residential3Layer = new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON({
-      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
-    }),
-    //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
-    url: 'data/ZR2-Sul.geojson'
-  }),
-  // source : new VectorSource({
-  //   url : './data/ZR2.kml',
-  //   format: new KML({
-  //     extractStyles: false,
-  //   }),
-  // }),
-  zIndex: 1,
-  style: new Style({
-    stroke: new Stroke({
-      color: '#000',
-      width: 0.2
-    }),
-    fill: new Fill({
-      color: 'rgba(0, 255, 255, 0.67)'
-    })
-  })
-});
+// const industrialLayer = new VectorLayer({
+//   source: new VectorSource({
+//     format: new GeoJSON({
+//       dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
+//       featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
+//     }),
+//     url: 'https://api.maptiler.com/data/01992729-4cc4-78fa-a908-99deda5800cb/features.json?key='+ key
+//     //url: './data/Residencial-01.geojson'
+//   }),
+//   zIndex: 2,
+//   style: new Style({
+//     stroke: new Stroke({
+//       color: '#000',
+//       width: 0.2
+//     }),
+//     fill: new Fill({
+//       color: 'rgba(255, 0, 0, 0.67)'
+//     })
+//   })
+// });
 
-map.addLayer(residential3Layer);
+// map.addLayer(industrialLayer);
 
-const residential4Layer = new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON({
-      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
-    }),
-    //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
-    url: 'data/ZR2-Leste.geojson'
-  }),
-  // source : new VectorSource({
-  //   url : './data/ZR2.kml',
-  //   format: new KML({
-  //     extractStyles: false,
-  //   }),
-  // }),
-  zIndex: 1,
-  style: new Style({
-    stroke: new Stroke({
-      color: '#000',
-      width: 0.2
-    }),
-    fill: new Fill({
-      color: 'rgba(0, 255, 255, 0.67)'
-    })
-  })
-});
+// const mistaLayer = new VectorLayer({
+//   source: new VectorSource({
+//     format: new GeoJSON({
+//       dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
+//       featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
+//     }),
+//     url: 'https://api.maptiler.com/data/01992727-cda9-7029-85e5-79edbe3669c1/features.json?key='+ key
+//     //url: './data/mista.geojson'
+//   }),
+//   zIndex: 3,
+//   style: new Style({
+//     stroke: new Stroke({
+//       color: '#000',
+//       width: 0.2
+//     }),
+//     fill: new Fill({
+//       color: 'rgba(0, 255, 0, 0.67)'
+//     })
+//   })
+// });
 
-map.addLayer(residential4Layer);
+// map.addLayer(mistaLayer);
 
-const residential5Layer = new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON({
-      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
-    }),
-    //url: 'https://api.maptiler.com/data/01992728-42bd-740c-8a9a-a16b70521492/features.json?key='+ key
-    url: 'data/ZR2-Oeste.geojson'
-  }),
-  // source : new VectorSource({
-  //   url : './data/ZR2.kml',
-  //   format: new KML({
-  //     extractStyles: false,
-  //   }),
-  // }),
-  zIndex: 1,
-  style: new Style({
-    stroke: new Stroke({
-      color: '#000',
-      width: 0.2
-    }),
-    fill: new Fill({
-      color: 'rgba(0, 255, 255, 0.67)'
-    })
-  })
-});
+// const comercialLayer = new VectorLayer({
+//   source: new VectorSource({
+//     format: new GeoJSON({
+//       dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
+//       featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
+//     }),
+//     url: 'https://api.maptiler.com/data/01992727-5ddc-7b6c-8eee-95a6ee262f41/features.json?key='+ key
+//     //url: './data/Residencial-01.geojson'
+//   }),
+//   zIndex: 4,
+//   visible: true,
+//   style: new Style({
+//     stroke: new Stroke({
+//       color: '#000',
+//       width: 0.2
+//     }),
+//     fill: new Fill({
+//       color: 'rgba(255, 255, 0, 0.67)'
+//     })
+//   })
+// });
 
-map.addLayer(residential5Layer);
-
-const industrialLayer = new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON({
-      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
-    }),
-    url: 'https://api.maptiler.com/data/01992729-4cc4-78fa-a908-99deda5800cb/features.json?key='+ key
-    //url: './data/Residencial-01.geojson'
-  }),
-  zIndex: 2,
-  style: new Style({
-    stroke: new Stroke({
-      color: '#000',
-      width: 0.2
-    }),
-    fill: new Fill({
-      color: 'rgba(255, 0, 0, 0.67)'
-    })
-  })
-});
-
-map.addLayer(industrialLayer);
-
-const mistaLayer = new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON({
-      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
-    }),
-    url: 'https://api.maptiler.com/data/01992727-cda9-7029-85e5-79edbe3669c1/features.json?key='+ key
-    //url: './data/mista.geojson'
-  }),
-  zIndex: 3,
-  style: new Style({
-    stroke: new Stroke({
-      color: '#000',
-      width: 0.2
-    }),
-    fill: new Fill({
-      color: 'rgba(0, 255, 0, 0.67)'
-    })
-  })
-});
-
-map.addLayer(mistaLayer);
-
-const comercialLayer = new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON({
-      dataProjection: 'EPSG:31983',  // UTM Zona 23S (Pará de Minas-MG)
-      featureProjection: 'EPSG:3857'  // Projeção do mapa base (OpenStreetMap)
-    }),
-    url: 'https://api.maptiler.com/data/01992727-5ddc-7b6c-8eee-95a6ee262f41/features.json?key='+ key
-    //url: './data/Residencial-01.geojson'
-  }),
-  zIndex: 4,
-  visible: true,
-  style: new Style({
-    stroke: new Stroke({
-      color: '#000',
-      width: 0.2
-    }),
-    fill: new Fill({
-      color: 'rgba(255, 255, 0, 0.67)'
-    })
-  })
-});
-
-map.addLayer(comercialLayer);
+// map.addLayer(comercialLayer);
 
 apply(map, styleJson);
 
