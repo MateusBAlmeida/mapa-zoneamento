@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@maptiler/geocoding-control": "^2.1.7",
-    "ol": "^10.6.1",
+    "ol": "^10.7.0",
     "ol-mapbox-style": "^13.1.0",
     "proj4": "^2.19.10"
   }
